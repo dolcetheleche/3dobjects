@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>3D Model Viewer</title>
-  <style>body { margin: 0; overflow: hidden; }</style>
+  <title>3D Viewer</title>
+  <style>
+    body { margin: 0; }
+    canvas { display: block; }
+  </style>
 </head>
 <body>
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
@@ -12,12 +15,12 @@
   <script>
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    camera.position.z = 5;
+    camera.position.z = 3;
 
     const light = new THREE.PointLight(0xffffff, 1);
     light.position.set(10, 10, 10);
@@ -33,6 +36,8 @@
           child.material.needsUpdate = true;
         }
       });
+      obj.position.set(0, 0, 0);
+      obj.scale.set(1, 1, 1);
       scene.add(obj);
     });
 
