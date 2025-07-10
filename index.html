@@ -27,7 +27,7 @@
     scene.add(light);
 
     const loader = new THREE.OBJLoader();
-    const texture = new THREE.TextureLoader().load('waving_Hand_tripo_generated.jpg');
+    const texture = new THREE.TextureLoader().load('texture_fixed.jpg');
 
     loader.load('waving_Hand_tripo_generated.obj', function (obj) {
       obj.traverse((child) => {
